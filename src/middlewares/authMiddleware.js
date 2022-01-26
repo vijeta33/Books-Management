@@ -8,7 +8,7 @@ const authMiddleware =  (req, res, next) => {
 
     }
 
-    const decoded = jwt.decode(token, 'Magnificent')//in place of verify we use decode. 
+    const decoded = jwt.verify(token, 'Magnificent')
 
     if (!decoded) {
       return res.status(403).send({ status: false, message: `Invalid authentication token in request` })
@@ -22,7 +22,6 @@ const authMiddleware =  (req, res, next) => {
 
     next()
   } catch (error) {
-    console.error(`Error! ${error.message}`)
     return res.status(500).send({ status: false, message: error.message })
   }
 }

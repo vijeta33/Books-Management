@@ -28,12 +28,12 @@ const reviewSchema = new mongoose.Schema({
         max:5,
         required: true
     },
-    deletedAt: Date,    //confirm by menter
     isDeleted: {
         type: Boolean,
         default: false
     },
-    review: {type:String, trim:true},  //not understand what is optional
+    review: {type:String, trim:true},  
+    
 }, { timestamps: true });
 
 module.exports = mongoose.model('Review', reviewSchema)

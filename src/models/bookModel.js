@@ -52,11 +52,11 @@ const bookSchema = new mongoose.Schema({
     },
     reviews: {
         type: Number,
+        required: true,
         default: 0,
         trim: true
         
     },
-
     deletedAt: Date ,
 
     isDeleted: {

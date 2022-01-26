@@ -1,5 +1,5 @@
 const userModel = require("../models/userModel")
-//const validator = require('../validators/validator')
+const validator = require('../validators/validator')
 const jwt = require('jsonwebtoken')
 
 
@@ -37,9 +37,8 @@ const createUser = async function (req, res) {
             return res.status(400).send({ status: false, message: 'phone is required' })
         }
 
-        // if (!/^[0-9]\d{9}$/gi.test(mobile)) {
+        
     if (!/^(?:(?:\+|0{0,2})91(\s*[\-]\s*)?|[0]?)?[6789]\d{9}$/.test(phone.trim())) {
-        //if (!/^(\+\d{1,3}[- ]?)?\d{10}$/.test(mobile)) {
           res.status(400).send({
             status: false,
             message: `Phone should be a valid number`
@@ -81,21 +80,21 @@ const createUser = async function (req, res) {
             return res.status(400).send({ status: false, message: `email address is already registered` })
         }
 
-        //.....................................Address
-        // if (!validator.validAddress(address)) {
-        //     return res.status(400).send({ status: false, message: "Please provide address or check key value ." })
-        // }
-        // if (address) {
-        //     if (!validator.isValid(address.street)) {
-        //         return res.status(400).send({ status: false, message: "Street address cannot be empty or check key value ." })
-        //     }
-        //     if (!validator.isValid(address.city)) {
-        //         return res.status(400).send({ status: false, message: "City cannot be empty or check key value ." })
-        //     }
-        //     if (!validator.isValid(address.pincode)) {
-        //         return res.status(400).send({ status: false, message: "Pincode cannot be empty or check key value ." })
-        //     }
-        // }
+       // .....................................Address
+        if (!validator.validAddress(address)) {
+            return res.status(400).send({ status: false, message: "Please provide address or check key value ." })
+        }
+        if (address) {
+            if (!validator.isValid(address.street)) {
+                return res.status(400).send({ status: false, message: "Street address cannot be empty or check key value ." })
+            }
+            if (!validator.isValid(address.city)) {
+                return res.status(400).send({ status: false, message: "City cannot be empty or check key value ." })
+            }
+            if (!validator.isValid(address.pincode)) {
+                return res.status(400).send({ status: false, message: "Pincode cannot be empty or check key value ." })
+            }
+        }
 
 
         //.........................................

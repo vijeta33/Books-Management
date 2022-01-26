@@ -20,10 +20,8 @@
 const mongoose = require('mongoose')
 
 let validatephone = function (v) {
-    // let re = /^[0-9]\d{9}$/gi;   
-    let re = /^(?:(?:\+|0{0,2})91(\s*[\-]\s*)?|[0]?)?[6789]\d{9}$/;
-    //let re = /^(\+\d{1,3}[- ]?)?\d{10}$/;
-    return re.test(v);
+let re = /^(?:(?:\+|0{0,2})91(\s*[\-]\s*)?|[0]?)?[6789]\d{9}$/;
+return re.test(v);
 }
 
 const userSchema = new mongoose.Schema({
@@ -43,9 +41,7 @@ const userSchema = new mongoose.Schema({
         required: true,
         unique: true,
         validate: [validatephone, 'Please fill a valid phone Number'],
-        // match: [ /^[0-9]\d{9}$/gi, 'Please fill a valid Mobile Number']
         match: [/^(?:(?:\+|0{0,2})91(\s*[\-]\s*)?|[0]?)?[6789]\d{9}$/, 'please fill a valid phone Number']
-        //match: [/^(\+\d{1,3}[- ]?)?\d{10}$/,'please fill a valid Mobile Number']
     },
     email: {
 
