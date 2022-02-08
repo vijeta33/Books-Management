@@ -25,6 +25,7 @@ return re.test(v);
 }
 
 const userSchema = new mongoose.Schema({
+    
     title: {
         type: String,
         required: true,
@@ -73,5 +74,7 @@ const userSchema = new mongoose.Schema({
         }
     },
 }, { timestamps: true });
+
+
 
 module.exports = mongoose.model('users', userSchema)

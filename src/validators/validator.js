@@ -32,6 +32,8 @@ const validAddress = function(address) {
 const validRating = function isInteger(value) {
     return value % 1 == 0;
 }
+
+
 module.exports = {
     isValid,
     isValidRequestBody,

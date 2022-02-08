@@ -7,6 +7,7 @@ const bookController = require('../controllers/bookController')
 const reviewController = require('../controllers/reviewController')
 const mw = require('../middlewares/authMiddleware')
 
+
 // User routes
 router.post('/register', userController.createUser);
 router.post('/login', userController.loginUser);
@@ -18,6 +19,7 @@ router.get('/books', mw.authMiddleware, bookController.getAllBooks)
 router.get('/books/:bookId', mw.authMiddleware, bookController.getBookDetailsById)
 router.put('/books/:bookId', mw.authMiddleware, bookController.updateBook)
 router.delete('/books/:bookId', mw.authMiddleware, bookController.deleteBookByID)
+
 
 // Review routes
 router.post('/books/:bookId/review', reviewController.addReview)

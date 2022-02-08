@@ -58,7 +58,7 @@ const bookSchema = new mongoose.Schema({
         
     },
     deletedAt: Date ,
-
+    
     isDeleted: {
         type: Boolean,
         default: false
@@ -69,6 +69,8 @@ const bookSchema = new mongoose.Schema({
         required: "Released date is required",
         trim: true
     },
+
 }, { timestamps: true });
+
 
 module.exports = mongoose.model('Book', bookSchema)
